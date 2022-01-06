@@ -5,11 +5,8 @@ namespace App\RBot;
 use App\RBot\Annotation\RBotInit;
 use App\RBot\Annotation\RBotOnMessage;
 use Hyperf\Di\Annotation\AnnotationCollector;
-use Hyperf\HttpServer\Annotation\Controller;
-use Hyperf\HttpServer\Annotation\GetMapping;
 
 
-#[Controller]
 #[RBotInit]
 class RBot
 {
@@ -36,7 +33,6 @@ class RBot
         }
     }
 
-    #[GetMapping(path:"/test")]
     public function initOnMessage($RBotOnMessage,$msg): void
     {
         //$RBotOnMessage = AnnotationCollector::getMethodsByAnnotation(RBotOnMessage::class);
