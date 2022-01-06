@@ -8,6 +8,7 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Di\Annotation\AnnotationReader;
 use Hyperf\Di\ClassLoader;
 use Hyperf\Utils\Codec\Json;
+use Hyperf\Utils\Context;
 use Hyperf\Utils\Coroutine;
 use Hyperf\Utils\Exception\InvalidArgumentException;
 use Hyperf\Utils\Filesystem\FileNotFoundException;
@@ -120,6 +121,7 @@ class Start
             } else {
                 $ret = System::exec(sprintf('%s %s/vendor/hyperf/watcher/collector-reload.php %s', $this->option->getBin(), BASE_PATH, $file));
                 if ($ret['code'] === 0) {
+                    cache()->set('RBot_Running',time());
                     $this->output->writeln('Class reload success.');
                 } else {
                     $this->output->writeln('Class reload failed.');
@@ -140,21 +142,6 @@ class Start
     {
         if (! $this->option->isRestart()) {
             return;
-        }
-        $file = $this->config->get('codefec.RBot_pid_file');
-        if (empty($file)) {
-            throw new FileNotFoundException('The config of RBot_pid_file is not found.');
-        }
-        if (! $isStart && $this->filesystem->exists($file)) {
-            $pid = $this->filesystem->get($file);
-            try {
-                $this->output->writeln('Stop server...');
-                if (Process::kill((int) $pid, 0)) {
-                    Process::kill((int) $pid, SIGTERM);
-                }
-            } catch (\Throwable $exception) {
-                $this->output->writeln('Stop server failed. Please execute `composer dump-autoload -o`');
-            }
         }
 
         Coroutine::create(function () {

@@ -7,6 +7,7 @@ namespace App\Command;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\Utils\Context;
 use Hyperf\WebSocketClient\ClientFactory;
 use Psr\Container\ContainerInterface;
 use Swoole\Coroutine;
@@ -57,6 +58,11 @@ class RBot extends HyperfCommand
     public function running($client): void
     {
         while (true){
+            if(cache()->has('RBot_Running')){
+                $client->close();
+                cache()->delete('RBot_Running');
+                return;
+            }
             $msg = $client->recv(2);
             $this->info($msg."\n");
             (new \App\RBot\RBot())->handle($msg);
