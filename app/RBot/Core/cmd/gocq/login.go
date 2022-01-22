@@ -63,12 +63,15 @@ func qrcodeLogin() error {
 		return err
 	}
 	_ = os.WriteFile("qrcode.png", rsp.ImageData, 0o644)
-	defer func() { _ = os.Remove("qrcode.png") }()
+	_ = os.WriteFile("../../../public/qrcode.png", rsp.ImageData, 0o644)
+	defer func() { _ = os.Remove("qrcode.png")  }()
+	defer func() { _ = os.Remove("../../../public/qrcode.png") }()
 	if cli.Uin != 0 {
 		log.Infof("请使用账号 %v 登录手机QQ扫描二维码 (qrcode.png) : ", cli.Uin)
 	} else {
 		log.Infof("请使用手机QQ扫描二维码 (qrcode.png) : ")
 	}
+	log.Infof("也可通过后台查看二维码")
 	time.Sleep(time.Second)
 	qrcodeTerminal.New2(qrcodeTerminal.ConsoleColors.BrightBlack, qrcodeTerminal.ConsoleColors.BrightWhite, qrcodeTerminal.QRCodeRecoveryLevels.Low).Get(fi.Content).Print()
 	s, err := cli.QueryQRCodeStatus(rsp.Sig)

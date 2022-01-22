@@ -42,6 +42,7 @@ mix.js(resources_path("js/alpine.js"),"js")
     mix.js(resources_path("js/admin/EditFile.js"),"js/admin").version();
     // error
     mix.js(resources_path("js/admin/error.js"),"js/admin").version();
+    mix.js(resources_path("js/admin/logger.js"),"js/admin").version();
     // component
     mix.js(resources_path("js/admin/component.js"),"js/admin").version();
     // setting

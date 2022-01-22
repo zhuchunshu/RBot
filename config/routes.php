@@ -37,3 +37,4 @@ foreach ((new Plugins())->getEnPlugins() as $value){
         require plugin_path($value."/routes.php");
     }
 }
+
