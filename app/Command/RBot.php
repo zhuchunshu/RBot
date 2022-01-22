@@ -50,8 +50,13 @@ class RBot extends HyperfCommand
     public function handle()
     {
         $host = get_options("websocket","ws://127.0.0.1:6700");
-        $client = $this->clientFactory->create($host,false);
-        $this->running($client);
+        try {
+            $client = $this->clientFactory->create($host,false);
+            $this->running($client);
+        }catch (\Exception $e) {
+            $this->line("websocket连接出错!","error");
+            $this->line($e);
+        }
 
     }
 
