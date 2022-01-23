@@ -22,6 +22,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="card border-0">
+            <div class="card-body">
+                <h3 class="card-title">Message</h3>
+                <pre id="messages" style="height: 400px;">
+                    loadding...
+                </pre>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')

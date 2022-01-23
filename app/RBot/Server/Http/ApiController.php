@@ -15,4 +15,10 @@ class ApiController
         $data = @file_get_contents(BASE_PATH."/app/RBot/Core/logs/".$filename);
         return Json_Api(200,true,$data);
     }
+
+    #[PostMapping(path:"/admin/api/messages")]
+    public function messages(){
+        $data = cache()->get("RBotMessage.a".date("Ymd"));
+        return Json_Api(200,true,(string)$data);
+    }
 }

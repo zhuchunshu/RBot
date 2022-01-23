@@ -2113,6 +2113,11 @@ setInterval(function () {
   }).then(function (r) {
     $("#logger").html(r.data.result);
   });
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/admin/api/messages", {
+    _token: csrf_token
+  }).then(function (r) {
+    $("#messages").html(r.data.result);
+  });
   $("#qrcode").attr("style", "background-image:url(/qrcode.png);background-size:100% 100%;");
 }, 1500);
 })();
