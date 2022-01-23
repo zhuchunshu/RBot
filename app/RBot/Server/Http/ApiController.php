@@ -18,7 +18,7 @@ class ApiController
 
     #[PostMapping(path:"/admin/api/messages")]
     public function messages(){
-        $data = cache()->get("RBotMessage.a".date("Ymd"));
+        $data = cache()->get("RBotMessage.".date("Ymd"));
         return Json_Api(200,true,(string)$data);
     }
 }

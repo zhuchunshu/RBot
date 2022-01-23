@@ -68,7 +68,7 @@ class RBot
     }
 
     public function record($msg){
-        cache()->set("RBotMessage.a".date("Ymd"),cache()->get("RBotMessage.a".date("Ymd")).$msg,86400);
+        cache()->set("RBotMessage.".date("Ymd"),cache()->get("RBotMessage.".date("Ymd")).$msg,86400);
     }
 
 }
