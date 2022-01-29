@@ -154,7 +154,7 @@ func generateConfig() {
 	fmt.Println("未找到配置文件，正在为您生成配置文件中！")
 	sb := strings.Builder{}
 	sb.WriteString(defaultConfig)
-	readString := "2"
+	readString := "02"
 	rmax := len(serverconfs)
 	if rmax > 10 {
 		rmax = 10
