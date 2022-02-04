@@ -23,7 +23,7 @@ return [
             'name' => 'http',
             'type' => ServerInterface::SERVER_HTTP,
             'host' => (string) env('SERVER_WEB_DOMAIN','127.0.0.1'),
-            'port' => (int) env('SERVER_WEB_PORT', 9501),
+            'port' => (int) env('SERVER_WEB_PORT', 9901),
             'sock_type' => SWOOLE_SOCK_TCP,
             'callbacks' => [
                 Event::ON_REQUEST => [CodeFecServer::class, 'onRequest'],
