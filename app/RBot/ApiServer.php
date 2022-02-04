@@ -52,7 +52,8 @@ class ApiServer
      */
     private function build(): void
     {
-        $ret = System::exec('cd ' . BASE_PATH."/app/RBot/Core && go env -w GOPROXY=https://goproxy.cn,direct && go build -ldflags \"-s -w -extldflags '-static'\" -o BotServer");
+        $go_bin = env("GO_BIN","go");
+        $ret = System::exec('cd ' . BASE_PATH."/app/RBot/Core && ".$go_bin." env -w GOPROXY=https://goproxy.cn,direct && ".$go_bin." build -ldflags \"-s -w -extldflags '-static'\" -o BotServer");
         if($ret['output']){
             $this->command->info($ret['output']);
         }else{

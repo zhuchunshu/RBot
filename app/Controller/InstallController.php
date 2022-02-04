@@ -102,6 +102,9 @@ class InstallController extends AbstractController
         if (!file_exists(BASE_PATH . "/.env")) {
             copy(BASE_PATH . "/.env.example", BASE_PATH . "/.env");
         }
+        modifyEnv([
+            'GO_BIN' => shell_exec("which go"),
+        ]);
     }
 
     public function post_step3(): void
