@@ -6,3 +6,7 @@ PHP机器人框架客户端
  - [Hyperf](https://github.com/hyperf/hyperf)
 ## 交流QQ群
 798695907
+## 社区
+[https://forum.runpod.cn/tags/7.html](https://forum.runpod.cn/tags/7.html)
+## 提问
+[https://forum.runpod.cn/topic/create](https://forum.runpod.cn/topic/create)
