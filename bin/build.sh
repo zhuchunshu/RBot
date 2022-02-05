@@ -7,13 +7,13 @@ echo "下载完毕，开始安装\n\n";
 tar -C /usr/local -xzf go.tar.gz
 echo "安装完成!\n\n";
 rm -rf "`pwd`/go.tar.gz"
-cd "`pwd`/../app/RBot/Core"
+cd "`pwd`/app/RBot/Core"
 /usr/local/go/bin/go version
 /usr/local/go/bin/go env -w GOPROXY=https://goproxy.cn,direct && /usr/local/go/bin/go build -ldflags "-s -w -extldflags '-static'" -o BotServer
 echo "编译完成"
 exit
 else
-cd "`pwd`/../app/RBot/Core"
+cd "`pwd`/app/RBot/Core"
 /usr/local/go/bin/go version
 /usr/local/go/bin/go env -w GOPROXY=https://goproxy.cn,direct && /usr/local/go/bin/go build -ldflags "-s -w -extldflags '-static'" -o BotServer
 echo "编译完成"
