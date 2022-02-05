@@ -52,13 +52,7 @@ class ApiServer
      */
     private function build(): void
     {
-        $go_bin = env("GO_BIN","go");
-        $ret = System::exec('cd ' . BASE_PATH."/app/RBot/Core && ".$go_bin." env -w GOPROXY=https://goproxy.cn,direct && ".$go_bin." build -ldflags \"-s -w -extldflags '-static'\" -o BotServer");
-        if($ret['output']){
-            $this->command->info($ret['output']);
-        }else{
-            $this->command->info('编译完成,请重新运行此命令');
-        }
+        $this->command->line("未找到 ".BASE_PATH."app/RBot/Core/BotServer 文件,请编译后重新执行此命令");
     }
 
 
