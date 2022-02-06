@@ -28,7 +28,7 @@ class RBot
                 $Plugin = $Plugin[2];
             }
             if(@is_dir(BASE_PATH . "/app/Plugins/" . $Plugin) && in_array($Plugin, Plugins_EnList(), true) && method_exists(new $key(),"handle")) {
-                (new $key())->handle($msg);
+                (new $key())->handle($msg,RBotMsg($msg));
             }
         }
     }
@@ -58,7 +58,7 @@ class RBot
                 if($run===true){
                     $class = $value['class'];
                     $method = $value['method'];
-                    (new $class())->$method($msg);
+                    (new $class())->$method($msg,RBotMsg($msg));
                 }
             }
         }

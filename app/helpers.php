@@ -818,6 +818,15 @@ if (!function_exists("sendData")){
     }
 }
 
+if(!function_exists("http")){
+    function http($response_type='array'){
+        $client = Client::create([
+            'response_type' => $response_type,
+        ]);
+        return $client;
+    }
+}
+
 if(!function_exists("http_client")){
     function http_client($response_type="array"): Client
     {

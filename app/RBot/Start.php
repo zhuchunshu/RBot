@@ -122,7 +122,6 @@ class Start
                 $ret = System::exec(sprintf('%s %s/vendor/hyperf/watcher/collector-reload.php %s', $this->option->getBin(), BASE_PATH, $file));
                 if ($ret['code'] === 0) {
                     cache()->set('RBot_Running',time());
-                    $this->output->writeln('Class reload success.');
                 } else {
                     $this->output->writeln('Class reload failed.');
                     $this->output->writeln($ret['output'] ?? '');
@@ -134,8 +133,7 @@ class Start
 
     public function dumpautoload()
     {
-        $ret = System::exec('composer dump-autoload -o --no-scripts -d ' . BASE_PATH);
-        $this->output->writeln($ret['output'] ?? '');
+
     }
 
     public function restart($isStart = true)
