@@ -18,7 +18,6 @@ class RBot
         $RBotOnMessage = AnnotationCollector::getMethodsByAnnotation(RBotOnMessage::class);
         $this->initPlugins($RBotClass,$msg);
         $this->initOnMessage($RBotOnMessage,$msg);
-        $this->record($msg);
     }
 
     public function initPlugins($RBotClass,$msg)
@@ -63,10 +62,6 @@ class RBot
                 }
             }
         }
-    }
-
-    public function record($msg){
-        cache()->set("RBotMessage.".date("Ymd"),cache()->get("RBotMessage.".date("Ymd")).$msg,86400);
     }
 
 }

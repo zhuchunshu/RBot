@@ -7,10 +7,27 @@ setInterval(function(){
         $("#logger").html(r.data.result)
     })
 
-    axios.post("/admin/api/messages",{
-        _token:csrf_token
-    }).then(r=>{
-        $("#messages").html(r.data.result)
-    })
-    $("#qrcode").attr("style","background-image:url(/qrcode.png);background-size:100% 100%;")
+
 },1500)
+axios.post("/admin/api/getQrcode",{
+    _token:csrf_token,
+}).then(r=>{
+    var data = r.data;
+    if(data.success){
+        var img = data.result.url;
+        $("#qrcode").empty()
+        $("#qrcode").html('<img src="'+img+'" />');
+    }
+})
+setInterval(function(){
+    axios.post("/admin/api/getQrcode",{
+        _token:csrf_token,
+    }).then(r=>{
+        var data = r.data;
+        if(data.success){
+            var img = data.result.url;
+            $("#qrcode").empty()
+            $("#qrcode").html('<img src="'+img+'" height="300px" width="300px" />');
+        }
+    })
+},500)
