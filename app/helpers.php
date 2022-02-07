@@ -822,6 +822,7 @@ if(!function_exists("http")){
     function http($response_type='array'){
         $client = Client::create([
             'response_type' => $response_type,
+            'verify' => false
         ]);
         return $client;
     }
