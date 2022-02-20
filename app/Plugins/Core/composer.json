@@ -16,4 +16,8 @@
         "divineomega/php-summary": "^3.0",
         "xemlock/htmlpurifier-html5": "^0.1.11"
     }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    }
 }

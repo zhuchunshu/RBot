@@ -72,6 +72,26 @@ class RBotMsg
         }
         return null;
     }
+	
+	/**
+	 * 通知类型
+	 */
+	public function notice_type(){
+		if(@$this->msg->notice_type){
+			return $this->msg->notice_type;
+		}
+		return null;
+	}
+	
+	/**
+	 * 请求类型
+	 */
+	public function request_type(){
+		if(@$this->msg->request_type){
+			return $this->msg->request_type;
+		}
+		return null;
+	}
 
     public function Send($data, $action): void
     {
