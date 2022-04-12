@@ -6724,10 +6724,10 @@ vdirs@^0.1.4:
     "@types/node" "^14.14.10"
     evtd "^0.2.2"
 
-vditor@^3.8.6:
-  version "3.8.6"
-  resolved "https://registry.nlark.com/vditor/download/vditor-3.8.6.tgz#95a89c4865efa740bf55f2a7e3f968b395987a60"
-  integrity sha1-laicSGXvp0C/VfKn4/los5WYemA=
+vditor@^3.8.13:
+  version "3.8.13"
+  resolved "https://registry.yarnpkg.com/vditor/-/vditor-3.8.13.tgz#9f4a549fd559e14fe65cc188ceadba61051db57c"
+  integrity sha512-vp6OF1n9wIduKtLvvTYtn+7Gr1Az6MqDIEBpLzik+PTQ208YjrcQ+Ba4AHXMMvJgDtbYP3PdY8OixWKecFzo2A==
   dependencies:
     diff-match-patch "^1.0.5"
 
